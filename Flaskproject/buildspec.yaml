@@ -10,14 +10,14 @@ phases:
       python : 3.11
   pre_build:
     commands:
-      - pip install -r requirements.txt
+      - pip install -r Flaskroject/requirements.txt
   build:
     commands:
       - cd Flaskproject
       - echo "Building the Docker image..."
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
-      - docker build -t "$DOCKER_REGISTRY_URL"/myapp:latest .
-      - docker push "$DOCKER_REGISTRY_URL"/myapp:latest
+      - docker build -t "$DOCKER_REGISTRY_URL"/$DOCKER_REGISTRY_USERNAME/Flaskproject:latest".
+      - docker push "$DOCKER_REGISTRY_URL"/Flaskproject:latest
   post_build:
     commands:
       - echo Build completed.
